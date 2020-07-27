@@ -20,40 +20,48 @@ def get_csv(url, filename, strIMP="None"):
 
     soup = BeautifulSoup(page.content, 'html.parser')
 
-    treeTB = soup.find('table', class_="wikitable")
+    table = soup.find('table', class_="wikitable")
     if strIMP != "None":
-        tr = treeTB.findNext('tr')
+        tr = table.findNext('tr')
         if strIMP in tr:
             print("ok!")
         else:
-            treeTB = soup.select('table:contains(' + strIMP + ')')[0]
+            table = soup.select('table:contains(' + strIMP + ')')
+            if len(table) > 0:
+                table = table[0]
+            else:
+                print("Tabela não encontrada, tente outros termos. Tabela:", table)
+                exit(0)
 
-    print(treeTB)
-    dictTree = {}
-    thList = []
-    tdList = []
+    dictable = {}
+    thlist = []
+    tdlist = []
 
-    for th in treeTB.findAll('th'):
-        dictTree[th.text.strip()] = []
-        thList.append(th.text.strip())
+    for th in table.findAll('th'):
+        dictable[th.text.strip()] = []
+        thlist.append(th.text.strip())
 
-    for td in treeTB.findAll('td'):
-        tdList.append(td.text.strip())
+    for td in table.findAll('td'):
+        tdlist.append(td.text.strip())
 
-    tdList = create_chunks(tdList, len(dictTree))
-    tdList = sorted(tdList, key=lambda x: int(x[0]))
-    print(tdList)
+    tdlist = create_chunks(tdlist, len(dictable))
+    tdlist = sorted(tdlist, key=lambda x: int(x[0]))
 
-    for lista in tdList:
+    for lista in tdlist:
         count = 0
         for elemento in lista:
-            dictTree[thList[count]].append(elemento)
+            dictable[thlist[count]].append(elemento)
             count += 1
-    # dictTree = sorted(dictTree)
-    treeframe = pd.DataFrame(dictTree)
-    treeframe.to_csv(filename, index=False, encoding='utf-8')
+
+    dataframe = pd.DataFrame(dictable)
+    dataframe.to_csv(filename, index=False, encoding='utf-8')
+    print(filename + " salvo com sucesso!")
 
 
 get_csv("https://www.curseofaros.wiki/wiki/Trees", "treeFrame.csv")
-get_csv("https://www.curseofaros.wiki/wiki/XP", "xpFrame.csv")
+get_csv("https://www.curseofaros.wiki/wiki/XP", "experienceFrame.csv")
 get_csv("https://www.curseofaros.wiki/wiki/Mining", "miningFrame.csv", "Ores")
+get_csv("https://www.curseofaros.wiki/wiki/Fishing", "fishingFrame.csv", "exp")
+get_csv("https://www.curseofaros.wiki/wiki/Crafting", "craftingFrame.csv", "Relic")
+get_csv("https://www.curseofaros.wiki/wiki/Cooking", "cookingFrame.csv")
+# get_csv("https://www.curseofaros.wiki/wiki/Alchemy", "alchemyFrame.csv")
