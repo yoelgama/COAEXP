@@ -58,10 +58,10 @@ def get_csv(url, filename, strIMP="None"):
     print(filename + " salvo com sucesso!")
 
 
-get_csv("https://www.curseofaros.wiki/wiki/Trees", "treeFrame.csv")
-get_csv("https://www.curseofaros.wiki/wiki/XP", "experienceFrame.csv")
-get_csv("https://www.curseofaros.wiki/wiki/Mining", "miningFrame.csv", "Ores")
-get_csv("https://www.curseofaros.wiki/wiki/Fishing", "fishingFrame.csv", "exp")
-get_csv("https://www.curseofaros.wiki/wiki/Crafting", "craftingFrame.csv", "Relic")
-get_csv("https://www.curseofaros.wiki/wiki/Cooking", "cookingFrame.csv")
+get_csv("https://www.curseofaros.wiki/wiki/Trees", "src/dataframes/treeFrame.csv")
+get_csv("https://www.curseofaros.wiki/wiki/XP", "src/dataframes/experienceFrame.csv")
+get_csv("https://www.curseofaros.wiki/wiki/Mining", "src/dataframes/miningFrame.csv", "Ores")
+get_csv("https://www.curseofaros.wiki/wiki/Fishing", "src/dataframes/fishingFrame.csv", "exp")
+get_csv("https://www.curseofaros.wiki/wiki/Crafting", "src/dataframes/craftingFrame.csv", "Relic")
+get_csv("https://www.curseofaros.wiki/wiki/Cooking", "src/dataframes/cookingFrame.csv")
 # get_csv("https://www.curseofaros.wiki/wiki/Alchemy", "alchemyFrame.csv")
