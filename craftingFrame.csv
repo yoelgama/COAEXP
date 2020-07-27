@@ -1,0 +1,11 @@
+Crafting Requirement,Relic,Logs Required,XP for Crafting,Merchant Price,Relic Effect,Relic Usage Rate
+1,Relic of Accuracy,1x Pine Logs,3,4,Increases Accuracy Against Monsters by 5%,10%
+5,Relic of Guarding,1x Dead Logs,8,13,Increases Defence Against Monsters by 5%,10%
+10,Relic of Healing,1x Birch Logs,18,33,Increases Effectiveness of Potions by 10%,10%
+20,Relic of Wealth,1x Applewood,40,78,Increases Gold Dropped from Monsters by 5%,5%
+30,Relic of Power,1x Willow Logs,105,150,Increases Rate of Critical Hits by 5%,10%
+40,Relic of Nature,1x Oak Logs,200,300,Increases Gathering Skill Efficiency,5%
+50,Relic of Fire,1x Chestnut Logs,425,600,Reduces Burn Damage by 10%,15%
+60,Relic of Damage,1x Maple Logs,900,900,Increases Strength Against Monsters by 5%,10%
+70,Relic of Leeching,1x Olive Logs,1400,1200,7% Chance to Heal 15% of Damage You Dealt to a Monster That Hit,When Triggered
+75,Relic of Experience,1x Maple Logs 1x  Olive Logs,1850,2100,Increases XP Gained from Combat by 5%,20%
