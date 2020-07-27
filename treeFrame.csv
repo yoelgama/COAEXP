@@ -1,0 +1,10 @@
+Cutting Requirement,Tree Name,Log Given,XP for cutting
+1,Pine Tree,Pine Logs,10
+5,Dead Tree,Dead Logs,20
+10,Birch Tree,Birch Logs,50
+20,Apple Tree,Applewood,115
+30,Willow Tree,Willow Logs,350
+40,Oak Tree,Oak Logs,475
+50,Chestnut Tree,Chestnut Logs,650
+60,Maple Tree,Maple Logs,1200
+70,Olive Tree,Olive Logs,1800
