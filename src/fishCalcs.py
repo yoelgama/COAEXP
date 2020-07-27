@@ -17,14 +17,11 @@ fishexplist = list(fishFrame['Fishing exp'])
 max = len(levellist)
 count = 1
 
-print(levellist)
-print(expList)
 expDict = {}
 for item in expList:
     expDict[count] = item
     count += 1
 
-print(expDict)
 count = 0
 while count < max:
     fish[levellist[count]] = {
