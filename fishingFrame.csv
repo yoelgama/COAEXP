@@ -1,0 +1,18 @@
+Fishing-Level,Fish,Bait used,Fishing exp
+1,Anchovies,Earthworm,10
+5,Goldfish,Earthworm,20
+10,Mackerel,Iceworm,50
+20,Squid,Iceworm,115
+30,Sardine,Corpseworm,375
+40,Eel,Toxic Worm,500
+50,Trout,Beetle,750
+55,Jellyfish,Beetle,900
+60,Bass,Grasshopper,"1,350"
+65,Herringbone,Grasshopper,"1,700"
+70,Tuna,Wasp,"2,000"
+75,Lobster,Scallop,"3,500"
+80,Sea Turtle,Scallop,"6,500"
+85,Manta Ray,Crab,"9,500"
+90,Shark,Bass,"14,500"
+95,Orca,Bass,"29,500"
+100,Giant Squid,Bass,"55,000"
