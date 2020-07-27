@@ -1,32 +1,50 @@
-from selenium import webdriver
+import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-print("Iniciando....")
 
-print("selecionando o Chrome...")
-driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+def create_chunks(list_name, n):
+    chunkList = []
+    for i in range(0, len(list_name), n):
+        chunkList.append(list_name[i:i + n])
 
-print("acessando o site...")
-driver.get("https://www.curseofaros.wiki/wiki/Skills")
+    return chunkList
 
-level = []  # List to store name of the product
-totalExperience = []  # List to store price of the product
-ratings = []  # List to store rating of the product
 
-content = driver.page_source
-soup = BeautifulSoup(content)
+def get_csv(url, filename):
+    page = requests.get(url)
 
-for a in soup.findAll('a', href=True, attrs={'class': '_31qSD5'}):
-    name = a.find('div', attrs={'class': '_3wU53n'})
-    price = a.find('div', attrs={'class': '_1vC4OE _2rQ-NK'})
-    rating = a.find('div', attrs={'class': 'hGSR34'})
-    products.append(name.text)
-    prices.append(price.text)
-    if rating is not None:
-        ratings.append(rating.text)
-    else:
-        ratings.append("N/A")
+    if page.status_code != 200:
+        print("We was get a problem with code: ", page.status_code)
 
-df = pd.DataFrame({'Product Name': products, 'Price': prices, 'Rating': ratings})
-df.to_csv('products.csv', index=False, encoding='utf-8')
+    soup = BeautifulSoup(page.content, 'html.parser')
+
+    treeTB = soup.find('table', class_="wikitable")
+
+    dictTree = {}
+    listTree = list(treeTB.text.strip().split("\n"))
+    thList = []
+    tdList = []
+
+    for thElement in treeTB.findAll('th'):
+        for th in thElement:
+            dictTree[th.strip()] = []
+            thList.append(th.strip())
+
+    for td in treeTB.findAll('td'):
+        tdList.append(td.text.strip())
+
+    tdList = create_chunks(tdList, len(dictTree))
+
+    for lista in tdList:
+        count = 0
+        for elemento in lista:
+            dictTree[thList[count]].append(elemento)
+            count += 1
+
+    treeframe = pd.DataFrame(dictTree)
+
+    treeframe.to_csv(filename, index=False, encoding='utf-8')
+
+
+get_csv("https://www.curseofaros.wiki/wiki/Trees", "treeFrame.csv")
