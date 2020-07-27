@@ -1,0 +1,12 @@
+Cooking Requirement,Food,Items Required,XP for Cooking,Merchant Price,Pet Damage Increase (%),Duration (seconds),Pet Level
+1,Cooked Anchovies,1x Anchovies 1x Salt,10,4,5,180,1
+10,Cooked Mackerel,1x Mackerel 1x Salt,50,33,10,180,10
+20,Cooked Squid,1x Squid 1x Salt,115,78,10,240,20
+30,Cooked Sardine,1x Sardine 1x Salt,375,150,20,180,30
+40,Cooked Eel,1x Eel 1x Salt,500,300,20,240,40
+50,Cooked Trout,1x Trout 1x Salt,750,600,40,180,50
+60,Cooked Bass,1x Bass 1x Pink salt,"1,350",900,40,240,60
+70,Cooked Tuna,1x Tuna 1x Pink salt,"2,000","1,200",60,180,70
+75,Cooked Lobster,1x Lobster 1x Pink salt,"3,500","1,500",60,240,75
+80,Cooked Sea Turtle,1x Sea Turtle 1x Pink salt,"6,500","1,800",80,240,80
+85,Cooked Manta Ray,1x Manta Ray 1x Pink salt,"9,500","2,100",100,240,85
