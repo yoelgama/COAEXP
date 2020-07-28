@@ -1,7 +1,0 @@
-,1,5,10,20,30,40,50,55,60,65,70,75,80,85,90,95,100
-Item got,Anchovies,Goldfish,Mackerel,Squid,Sardine,Eel,Trout,Jellyfish,Bass,Herringbone,Tuna,Lobster,Sea Turtle,Manta Ray,Shark,Orca,Giant Squid
-Item need,Earthworm,Earthworm,Iceworm,Iceworm,Corpseworm,Toxic Worm,Beetle,Beetle,Grasshopper,Grasshopper,Wasp,Scallop,Scallop,Crab,Bass,Bass,Bass
-exp given,10,20,50,115,375,500,750,900,1350,1700,2000,3500,6500,9500,14500,29500,55000
-next,5,10,20,30,40,50,55,60,65,70,75,80,85,90,95,100,
-exp to next,229,539,3240,12974,51910,207644,276864,553728,1107458,2214917,4429836,8859675,17719350,35438700,70877402,141754805,
-items to next,22,26,64,112,138,415,369,615,820,1302,2214,2531,2726,3730,4888,4805,
