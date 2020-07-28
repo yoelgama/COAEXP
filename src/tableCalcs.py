@@ -49,16 +49,16 @@ def calcexp(fileframe, levelheader, itemgotheader, itemneedheader, expgotheader,
     print(filecompframe + " saved!")
 
 calcexp("dataframes/fishingFrame.csv", 'Fishing-Level', 'Fish', 'Bait used', 'Fishing exp',
-        "dataframes/leveling/fishComp.csv")
+        "dataframes/levelingtables/fishComp.csv")
 
 calcexp("dataframes/craftingFrame.csv", 'Crafting Requirement', 'Relic', 'Logs Required', 'XP for Crafting',
-        "dataframes/leveling/craftComp.csv")
+        "dataframes/levelingtables/craftComp.csv")
 
 calcexp("dataframes/cookingFrame.csv", 'Cooking Requirement', 'Food', 'Items Required', 'XP for Cooking',
-        "dataframes/leveling/cookComp.csv")
+        "dataframes/levelingtables/cookComp.csv")
 
 calcexp("dataframes/treeFrame.csv", 'Cutting Requirement', 'Tree Name', 'Log Given', 'XP for cutting',
-        "dataframes/leveling/woodComp.csv")
+        "dataframes/levelingtables/woodComp.csv")
 
 calcexp("dataframes/miningFrame.csv", 'Mining-level', 'Ores', 'Ores', 'Mining exp',
-        "dataframes/leveling/mineComp.csv")
+        "dataframes/levelingtables/mineComp.csv")
