@@ -48,7 +48,7 @@ def get_csv(url, filename, tableheader=""):
     linhas = []  # lista de text data (dados) da tabela
 
     for th in table.findAll('th'):
-        dictable[th.text.strip()] = []  # THs como keys do dic para medir a quantidade de colunas da tabela
+        dictable[th.text.strip()] = []  # Usa Titulos da table como chaves medir a quantidade de colunas da tabela
         titulos.append(th.text.strip())  # essa lista será usada como indexador do dic
 
     for td in table.findAll('td'):
