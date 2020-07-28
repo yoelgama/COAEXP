@@ -1,64 +1,65 @@
 import pandas as pd
 
+"""Calcula quantos itens que dão são necessários para passar para a próximo nível em que o item muda"""
 
-def calcexp(fileframe, levelheader, itemgotheader, itemneedheader, expgotheader, filecompframe):
-    fishFrame = pd.read_csv(fileframe)
-    expFrame = pd.read_csv("dataframes/experienceFrame.csv")
 
-    expFrame["Total Experience"] = expFrame["Total Experience"].str.replace(',', '').astype(int)
+def calcexp(fileframe, titulo_nivel, titulo_item, titulo_material, titulo_item_xp, salvarcomo):
+    # abre as tabelas
+    tabela_skill = pd.read_csv(fileframe)
+    tabela_xp = pd.read_csv("dataframes/experienceFrame.csv")
+    quantidade_niveis = list(range(1, len(tabela_xp) + 1))
+    print()
 
-    dictframe = {}
+    dictframe = {}  # armazenará a tabela final com as comparações
 
-    expList = list(expFrame["Total Experience"].unique())
+    lista_niveis = list(tabela_skill[titulo_nivel])
+    lista_itens = list(tabela_skill[titulo_item])
+    lista_material = list(tabela_skill[titulo_material])
+    lista_item_xp = list(tabela_skill[titulo_item_xp])
 
-    levellist = list(fishFrame[levelheader])
-    itemgotlist = list(fishFrame[itemgotheader])
-    itemneedlist = list(fishFrame[itemneedheader])
-    expgotlist = list(fishFrame[expgotheader])
+    dic_xp = {}  # uma lista de xp não indexaria corretamente a partir do 1
+    tabela_xp.index = quantidade_niveis
+    dic_xp = tabela_xp.to_dict('index')
 
-    max = len(levellist)
-    count = 1
-
-    expDict = {}
-    for item in expList:
-        expDict[count] = item
-        count += 1
-
-    count = 0
-    while count < max:
-        dictframe[levellist[count]] = {
-            'Item got': itemgotlist[count],
-            'Item need': itemneedlist[count]
+    nivel = 0
+    while nivel < len(lista_niveis):
+        dictframe[lista_niveis[nivel]] = {
+            'Item obtido': lista_itens[nivel],
+            'Item necessário': lista_material[nivel]
         }
-        if type(expgotlist[count]) != int:
-            dictframe[levellist[count]]['exp given'] = int(expgotlist[count].replace(',', ''))
+        if type(lista_item_xp[nivel]) != int:
+            dictframe[lista_niveis[nivel]]['exp given'] = int(lista_item_xp[nivel].replace(',', ''))
         else:
-            dictframe[levellist[count]]['exp given'] = expgotlist[count]
+            dictframe[lista_niveis[nivel]]['exp given'] = lista_item_xp[nivel]
 
-        if count + 1 < len(levellist):
-            dictframe[levellist[count]]['next'] = levellist[count + 1]
-            dictframe[levellist[count]]['exp to next'] = int(expDict[dictframe[levellist[count]]['next']] - expDict[
-                levellist[count]])
-            dictframe[levellist[count]]['items to next'] = dictframe[levellist[count]]['exp to next'] // dictframe[
-                levellist[count]].get('exp given')
+        if nivel + 1 < len(lista_niveis):
+            dictframe[lista_niveis[nivel]]['next'] = lista_niveis[nivel + 1]
 
-        count += 1
+            dictframe[lista_niveis[nivel]]['exp to next'] = int(
+                dic_xp[dictframe[lista_niveis[nivel]]['next']]['Total Experience'].replace(',', '')) - int(
+                dic_xp[dictframe[lista_niveis[nivel]]]['Total Experience'].replace(',', ''))
 
-    dataframe = pd.DataFrame(dictframe)
-    dataframe.to_csv(filecompframe, encoding='utf-8')
-    print(filecompframe + " saved!")
+            dictframe[lista_niveis[nivel]]['items to next'] = dictframe[lista_niveis[nivel]]['exp to next'] // \
+                                                              dictframe[
+                                                                  lista_niveis[nivel]].get('exp given')
 
-calcexp("dataframes/fishingFrame.csv", 'Fishing-Level', 'Fish', 'Bait used', 'Fishing exp',
-        "dataframes/levelingtables/fishComp.csv")
+            nivel += 1
 
-calcexp("dataframes/craftingFrame.csv", 'Crafting Requirement', 'Relic', 'Logs Required', 'XP for Crafting',
-        "dataframes/levelingtables/craftComp.csv")
+            dataframe = pd.DataFrame(dictframe)
+            dataframe.to_csv(salvarcomo, encoding='utf-8')
+            print(salvarcomo + " saved!")
 
-calcexp("dataframes/cookingFrame.csv", 'Cooking Requirement', 'Food', 'Items Required', 'XP for Cooking',
-        "dataframes/levelingtables/cookComp.csv")
+            calcexp("dataframes/fishingFrame.csv", 'Fishing-Level', 'Fish', 'Bait used', 'Fishing exp',
+                    "dataframes/levelingtables/fishComp.csv")
 
-calcexp("dataframes/treeFrame.csv", 'Cutting Requirement', 'Tree Name', 'Log Given', 'XP for cutting',
-        "dataframes/levelingtables/woodComp.csv")
+            calcexp("dataframes/craftingFrame.csv", 'Crafting Requirement', 'Relic', 'Logs Required', 'XP for Crafting',
+                    "dataframes/levelingtables/craftComp.csv")
 
-calcexp("dataframes/miningFrame.csv", 'Mining-level', 'Ores', 'Ores', 'Mining exp',
-        "dataframes/levelingtables/mineComp.csv")
+            calcexp("dataframes/cookingFrame.csv", 'Cooking Requirement', 'Food', 'Items Required', 'XP for Cooking',
+                    "dataframes/levelingtables/cookComp.csv")
+
+            calcexp("dataframes/treeFrame.csv", 'Cutting Requirement', 'Tree Name', 'Log Given', 'XP for cutting',
+                    "dataframes/levelingtables/woodComp.csv")
+
+            calcexp("dataframes/miningFrame.csv", 'Mining-level', 'Ores', 'Ores', 'Mining exp',
+                    "dataframes/levelingtables/mineComp.csv")
