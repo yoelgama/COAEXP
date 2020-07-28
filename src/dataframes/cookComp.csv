@@ -1,0 +1,7 @@
+,1,10,20,30,40,50,60,70,75,80,85
+Item got,Cooked Anchovies,Cooked Mackerel,Cooked Squid,Cooked Sardine,Cooked Eel,Cooked Trout,Cooked Bass,Cooked Tuna,Cooked Lobster,Cooked Sea Turtle,Cooked Manta Ray
+Item need,1x Anchovies 1x Salt,1x Mackerel 1x Salt,1x Squid 1x Salt,1x Sardine 1x Salt,1x Eel 1x Salt,1x Trout 1x Salt,1x Bass 1x Pink salt,1x Tuna 1x Pink salt,1x Lobster 1x Pink salt,1x Sea Turtle 1x Pink salt,1x Manta Ray 1x Pink salt
+exp given,10,50,115,375,500,750,1350,2000,3500,6500,9500
+next,10,20,30,40,50,60,70,75,80,85,
+exp to next,768,3240,12974,51910,207644,830592,3322375,4429836,8859675,17719350,
+items to next,76,64,112,138,415,1107,2461,2214,2531,2726,

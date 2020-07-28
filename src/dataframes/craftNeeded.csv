@@ -1,0 +1,7 @@
+,1,5,10,20,30,40,50,60,70,75
+Item got,Relic of Accuracy,Relic of Guarding,Relic of Healing,Relic of Wealth,Relic of Power,Relic of Nature,Relic of Fire,Relic of Damage,Relic of Leeching,Relic of Experience
+Item need,1x Pine Logs,1x Dead Logs,1x Birch Logs,1x Applewood,1x Willow Logs,1x Oak Logs,1x Chestnut Logs,1x Maple Logs,1x Olive Logs,1x Maple Logs 1x  Olive Logs
+exp given,3,8,18,40,105,200,425,900,1400,1850
+next,5,10,20,30,40,50,60,70,75,
+exp to next,229,539,3240,12974,51910,207644,830592,3322375,4429836,
+items to next,76,67,180,324,494,1038,1954,3691,3164,

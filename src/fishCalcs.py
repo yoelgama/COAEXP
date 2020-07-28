@@ -1,42 +1,64 @@
 import pandas as pd
 
-fishFrame = pd.read_csv("dataframes/fishingFrame.csv")
-expFrame = pd.read_csv("dataframes/experienceFrame.csv")
 
-expFrame["Total Experience"] = expFrame["Total Experience"].str.replace(',', '').astype(int)
+def calcexp(fileframe, levelheader, itemgotheader, itemneedheader, expgotheader, filecompframe):
+    fishFrame = pd.read_csv(fileframe)
+    expFrame = pd.read_csv("dataframes/experienceFrame.csv")
 
-fish = {}
+    expFrame["Total Experience"] = expFrame["Total Experience"].str.replace(',', '').astype(int)
 
-expList = list(expFrame["Total Experience"].unique())
+    dictframe = {}
 
-levellist = list(fishFrame['Fishing-Level'])
-fishlist = list(fishFrame['Fish'])
-baitlist = list(fishFrame['Bait used'])
-fishexplist = list(fishFrame['Fishing exp'])
+    expList = list(expFrame["Total Experience"].unique())
 
-max = len(levellist)
-count = 1
+    levellist = list(fishFrame[levelheader])
+    itemgotlist = list(fishFrame[itemgotheader])
+    itemneedlist = list(fishFrame[itemneedheader])
+    expgotlist = list(fishFrame[expgotheader])
 
-expDict = {}
-for item in expList:
-    expDict[count] = item
-    count += 1
+    max = len(levellist)
+    count = 1
 
-count = 0
-while count < max:
-    fish[levellist[count]] = {
-        'fish': fishlist[count],
-        'bait': baitlist[count],
-        'exp given': int(fishexplist[count].replace(',', '')),
+    expDict = {}
+    for item in expList:
+        expDict[count] = item
+        count += 1
 
-    }
-    if count + 1 < len(levellist):
-        fish[levellist[count]]['next'] = levellist[count + 1]
-        fish[levellist[count]]['exp to next'] = expDict[fish[levellist[count]]['next']] - expDict[levellist[count]]
-        fish[levellist[count]]['baits to next'] = fish[levellist[count]]['exp to next'] // \
-                                                  fish[levellist[count]].get('exp given')
+    count = 0
+    while count < max:
+        dictframe[levellist[count]] = {
+            'Item got': itemgotlist[count],
+            'Item need': itemneedlist[count]
+        }
+        if type(expgotlist[count]) != int:
+            dictframe[levellist[count]]['exp given'] = int(expgotlist[count].replace(',', ''))
+        else:
+            dictframe[levellist[count]]['exp given'] = expgotlist[count]
 
-    count += 1
+        if count + 1 < len(levellist):
+            dictframe[levellist[count]]['next'] = levellist[count + 1]
+            dictframe[levellist[count]]['exp to next'] = int(expDict[dictframe[levellist[count]]['next']] - expDict[
+                levellist[count]])
+            dictframe[levellist[count]]['items to next'] = dictframe[levellist[count]]['exp to next'] // dictframe[
+                levellist[count]].get('exp given')
 
-dataframe = pd.DataFrame(fish)
-dataframe.to_csv("dataframes/baitsNeeded.csv", encoding='utf-8')
+        count += 1
+
+    dataframe = pd.DataFrame(dictframe)
+    dataframe.to_csv(filecompframe, encoding='utf-8')
+    print(filecompframe + " saved!")
+
+calcexp("dataframes/fishingFrame.csv", 'Fishing-Level', 'Fish', 'Bait used', 'Fishing exp',
+        "dataframes/fishComp.csv")
+
+calcexp("dataframes/craftingFrame.csv", 'Crafting Requirement', 'Relic', 'Logs Required', 'XP for Crafting',
+        "dataframes/craftComp.csv")
+
+calcexp("dataframes/cookingFrame.csv", 'Cooking Requirement', 'Food', 'Items Required', 'XP for Cooking',
+        "dataframes/cookComp.csv")
+
+calcexp("dataframes/treeFrame.csv", 'Cutting Requirement', 'Tree Name', 'Log Given', 'XP for cutting',
+        "dataframes/woodComp.csv")
+
+calcexp("dataframes/miningFrame.csv", 'Mining-level', 'Ores', 'Ores', 'Mining exp',
+        "dataframes/mineComp.csv")

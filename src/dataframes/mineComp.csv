@@ -1,0 +1,7 @@
+,1,10,15,20,25,30,40,45,50,60,70
+Item got,Copper Ore,Iron Ore,Salt,Coal,Silver Ore,Crimsteel Ore,Gold Ore,Pink salt,Mythan Ore,Cobalt Ore,Varaxium
+Item need,Copper Ore,Iron Ore,Salt,Coal,Silver Ore,Crimsteel Ore,Gold Ore,Pink salt,Mythan Ore,Cobalt Ore,Varaxium
+exp given,10,50,80,115,135,350,400,500,650,1200,1800
+next,10,15,20,25,30,40,45,50,60,70,
+exp to next,768,1079,2161,4324,8650,51910,69214,138430,830592,3322375,
+items to next,76,21,27,37,64,148,173,276,1277,2768,
