@@ -1,3 +1,5 @@
 /venv/
 /src/examples/
-/.idea/
+/.idea/.idea
+venv
+/src/examples/
