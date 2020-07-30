@@ -33,7 +33,7 @@ def calcexp(fileframe, titulo_nivel, titulo_item, titulo_material, titulo_item_x
                 tabela_xp[lista_niveis[nivel + 1]].replace(',', '')) - int(
                 tabela_xp[lista_niveis[nivel]].replace(',', ''))
 
-            dictframe[lista_niveis[nivel]]['qnt. de material'] = dictframe[lista_niveis[nivel]]['XP para passar'] // \
+            dictframe[lista_niveis[nivel]]['qnt. de material'] = 1 + dictframe[lista_niveis[nivel]]['XP para passar'] // \
                                                                  dictframe[lista_niveis[nivel]].get('XP obtido')
 
     dataframe = pd.DataFrame(dictframe)
